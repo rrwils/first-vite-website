@@ -6,7 +6,7 @@ const HpRectangle = ({ hp, attack }) => {
         style={{
           width: hp,
           height: 10,
-          backgroundColor: "#1e2e4f",
+          backgroundColor: "#16284d",
           margin: "5px 0",
         }}
       />
@@ -16,7 +16,7 @@ const HpRectangle = ({ hp, attack }) => {
         style={{
           width: attack,
           height: 10,
-          backgroundColor: "#1e2e4f",
+          backgroundColor: "#16284d",
           margin: "5px 0",
         }}
       />

@@ -34,7 +34,7 @@ const Card = ({ data, hoveredIndex, setHoveredIndex, baseColor, hoverColor }) =>
                       height="100"
                       style={{ display: "block", margin: "0 auto" }}
                     />
-                        <p style={{margin: 0}}><Highlight type={d.type}>{d.type}</Highlight></p>
+                        <p style={{margin: 10}}><Highlight type={d.type}>{d.type}</Highlight></p>
                         <HpRectangle hp={d.hp} attack={d.attack} />
                     </div>
                 );
