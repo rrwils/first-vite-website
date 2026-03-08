@@ -1,17 +1,34 @@
-# React + Vite
+# Pokémon Card Explorer (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React + Vite demo that renders a set of Pokémon cards, supports filtering by Pokémon type, searching by name, and includes interactive UI touches like hover highlights and a favorites toggle.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Card grid** with Pokémon data (name, type, HP, attack)
+- **Type filters** (buttons styled by type, powered by a shared palette)
+- **Search bar** (live name filtering, case-insensitive)
+- **Hover effects** (highlight only the card under the cursor)
+- **Favorites toggle** (click to toggle favorite state)
+- **Bar charts** for HP/Attack values (simple inline bar visualization)
 
-## React Compiler
+## 📦 Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Then open the URL shown in the terminal (usually `http://localhost:5173`).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# first-vite-website
+## 🗂️ Key files
+
+- `src/App.jsx` – app layout, search + type filtering, and data flow
+- `src/Card.jsx` – renders the card grid and hover behavior
+- `src/Highlight.jsx` – type-based color palette + highlight styling
+- `src/Button.jsx` – type filter buttons
+- `src/hpRectangle.jsx` – simple HP/attack bar view
+- `src/FavoritesToggle.jsx` – click-to-favorite toggle component
+
+---
+
+Built as a learning playground for React + Vite.

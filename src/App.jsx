@@ -1,20 +1,77 @@
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import * as d3 from "d3";
+import Card from './Card';
+import Button from "./Button";
+import { useState } from 'react';
+import "@fortawesome/fontawesome-free/css/all.css";
+
+const data = [
+  { id: 1, name: "Bulbasaur", type: "Grass", hp: 45, attack: 49 },
+  { id: 4, name: "Charmander", type: "Fire", hp: 39, attack: 52 },
+  { id: 7, name: "Squirtle", type: "Water", hp: 44, attack: 48 },
+  { id: 25, name: "Pikachu", type: "Electric", hp: 35, attack: 55 },
+  { id: 6, name: "Charizard", type: "Fire", hp: 78, attack: 84 },
+  { id: 9, name: "Blastoise", type: "Water", hp: 79, attack: 83 },
+  { id: 3, name: "Venusaur", type: "Grass", hp: 80, attack: 82 },
+  { id: 150, name: "Mewtwo", type: "Psychic", hp: 106, attack: 110 },
+  { id: 39, name: "Jigglypuff", type: "Normal", hp: 115, attack: 45 },
+  { id: 143, name: "Snorlax", type: "Normal", hp: 160, attack: 110 },
+  { id: 94, name: "Gengar", type: "Ghost", hp: 60, attack: 65 },
+  { id: 131, name: "Lapras", type: "Water", hp: 130, attack: 85 },
+  { id: 133, name: "Eevee", type: "Normal", hp: 55, attack: 55 },
+  { id: 149, name: "Dragonite", type: "Dragon", hp: 91, attack: 134 },
+  { id: 59, name: "Arcanine", type: "Fire", hp: 90, attack: 110 },
+  { id: 65, name: "Alakazam", type: "Psychic", hp: 55, attack: 50 },
+  { id: 68, name: "Machamp", type: "Fighting", hp: 90, attack: 130 },
+  { id: 76, name: "Golem", type: "Rock", hp: 80, attack: 120 },
+  { id: 130, name: "Gyarados", type: "Water", hp: 95, attack: 125 },
+  { id: 148, name: "Dragonair", type: "Dragon", hp: 61, attack: 84 },
+];
 
 function App() {
-  const data = [4, 8, 15, 16, 23, 42];
-  console.log("Max:", d3.max(data));
+  const [baseColor] = useState("#fddd3e");
+  const [hoverColor] = useState("#ebcb2ad7");
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedType, setSelectedType] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredByType =
+    selectedType === "All"
+    ? data
+    : data.filter((d) => d.type === selectedType);
+
+  const filteredData =
+    filteredByType.filter((d) =>
+    d.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <>
-        <h1>Hello World!</h1>
+    <div>
+      <div className="topNav">
+        <input 
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search by name"
+          style={{ padding: "6px 8px", borderRadius: 4, border: "1px solid #ccc" }}/>
+        <div style={{ display: "flex", gap: 8, marginTop: 15, marginBottom: 20, alignItems: "center"}}>
+          Filter by type:
+          <Button selectedType={selectedType} onSelect={setSelectedType} />
+        </div>
+      </div>
       
-    </>
-    
-  )
+      <Card
+        data={filteredData}
+        hoveredIndex={hoveredIndex}
+        setHoveredIndex={setHoveredIndex}
+        baseColor={baseColor}
+        hoverColor={hoverColor}
+      />
+    </div>
+  );
 }
 
 export default App
+
+
+// next add: favorite toggle [favorite elements get displayed or pinned at the top]
